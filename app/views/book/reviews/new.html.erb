@@ -1,0 +1,12 @@
+<div class="page-header">
+  <h1>Create review for Bookhunterz</h1>
+</div>
+<% if @review.errors.any? %>
+  <% @review.errors.full_messages.each do |msg| %>
+    <p class="alert alert-error" ><%= msg %></p>
+  <% end %>
+<% end %>
+<%= render partial: 'form' %>
+<%= tinymce %>
+
+

@@ -1,0 +1,12 @@
+<div class="page-header">
+  <h1>Create news for Bookhunterz</h1>
+</div>
+<% if @news.errors.any? %>
+  <% @news.errors.full_messages.each do |msg| %>
+    <p class="alert alert-error" ><%= msg %></p>
+  <% end %>
+<% end %>
+<%= render partial: 'form' %>
+<%= tinymce %>
+
+

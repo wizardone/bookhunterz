@@ -1,0 +1,13 @@
+<%= form_for @news, url: {action: :create} do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  
+  <%= f.label :text %>
+  <%= f.text_area :text, class: 'tinymce' %>
+
+  <%= f.label :image %>
+  <%= f.file_field :image %>
+
+  <%= f.submit "Create" %>
+<% end %>
+

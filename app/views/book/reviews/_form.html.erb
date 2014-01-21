@@ -1,0 +1,13 @@
+<%= form_for @review, url: {action: :create} do |f| %>
+  <%= f.label :book_name %>
+  <%= f.text_field :book_name %>
+  
+  <%= f.label :review %>
+  <%= f.text_area :review, class: 'tinymce' %>
+
+  <%= f.label :image %>
+  <%= f.file_field :image %>
+
+  <%= f.submit "Create" %>
+<% end %>
+

@@ -1,0 +1,11 @@
+<h1>All reviews from Bookhunterz</h1>
+<%= link_to "Create review", new_review_path %>
+
+<% @reviews.each do |review| %>
+  <div>
+    <p><%=review.title %></p>
+    <p><%=review.text %></p>
+    <p><%=image_tag(review.image.thumb.url) %></p>
+    <p></p>
+  </div>
+<% end %>

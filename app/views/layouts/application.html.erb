@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bookhunterz</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= nav_bar :fixed => :top  do %>
+  <% menu_group do %>
+        <%= menu_item "Home", root_path %>
+        <%= menu_item "Новини", news_index_path %>
+        <%= menu_item "Ревюта", reviews_path %>
+    <% end %>
+  <% end %>
+  <div class="container">
+    <div id="header-image">
+      <%=image_tag(header_image) %>
+    </div>
+    <div>
+      <% if flash[:notice] %>
+        <p class="alert"><%= flash[:notice] %></p>
+      <% end %>
+      <% if flash[:error] %>
+        <p class="alert alert-error"><%= flash[:error] %></p>
+      <% end %>
+    </div>
+
+<%= yield %>
+</div>
+</body>
+</html>

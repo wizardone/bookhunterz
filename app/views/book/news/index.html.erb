@@ -1,0 +1,10 @@
+<h1>All news from Bookhunterz</h1>
+<%= link_to "Create news", new_news_path %>
+
+<% @news.each do |news| %>
+  <div>
+    <p><%=news.title %></p>
+    <p><%=news.text %></p>
+    <p><%=image_tag(news.image.thumb.url) %></p>
+  </div>
+<% end %>

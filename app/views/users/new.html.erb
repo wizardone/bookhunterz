@@ -1,0 +1,21 @@
+<h1>Register</h1>
+
+<% if @user.errors.any? %>
+  <% @user.errors.full_messages.each do |msg| %>
+    <p class="alert alert-error" ><%= msg %></p>
+  <% end %>
+<% end %>
+
+<%= form_for @user, url: {action: :create} do |f| %>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, :autofocus => true %></div>
+
+  <div><%= f.label :password %><br />
+  <%= f.password_field :password %></div>
+
+  <div><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></div>
+
+  <div><%= f.submit "Register" %></div>
+<% end %>
