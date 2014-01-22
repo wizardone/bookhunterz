@@ -1,0 +1,20 @@
+<h1>Login</h1>
+
+<%= form_tag({controller: 'sessions', action: 'create'}, method: 'post') do %>
+
+  <div><%=label :email, 'Email' %><br />
+    <%= email_field_tag :email %>
+  </div>
+
+  <div><%=label :password, 'Password' %><br />
+    <%= password_field_tag :password %>
+  </div>
+
+  <div><%=label :remember_me, 'Remember me' %>
+    <%= check_box_tag :remember_me, 'yes', true %>
+  </div>
+
+  <div><%=submit_tag "Login" %></div>
+<% end %>
+
+

@@ -8,7 +8,6 @@ class UsersController < ApplicationController
     else
       render :new
     end
-    #respond_with @user
   end
 
   def new
@@ -16,7 +15,6 @@ class UsersController < ApplicationController
   end
 
   def update
-
   end
 
    private
