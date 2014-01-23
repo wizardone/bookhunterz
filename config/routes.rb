@@ -9,9 +9,10 @@ Bookhunterz::Application.routes.draw do
     resources :news, :only => [:create, :show, :index, :new]
     resources :reviews, :only => [:create, :show, :index, :new]
    end
-  
+
    scope :admin do
     resource :user, :only => [:create, :update, :new]
+    resource :session, :only => [:create, :new]
    end
 
   # Example of regular route:

@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
      if @user.valid?
       @user.save
-      redirect_to @user, notice: "User sign up success"
+      redirect_to root_path, notice: "User created"
     else
       render :new
     end

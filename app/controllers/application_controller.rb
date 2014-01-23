@@ -3,7 +3,15 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  helper_method :header_image
+  helper_method :header_image, :current_user, :is_logged_in?
+
+  def current_user
+    User.find(session[:user_id])
+  end
+
+  def is_logged_in?
+    session[:user_id].present?
+  end
 
   def header_image
     'header_logo.jpg' if display_logo_actions.include? params[:action]

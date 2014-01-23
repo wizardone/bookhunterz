@@ -26,7 +26,9 @@
         <p class="alert alert-error"><%= flash[:error] %></p>
       <% end %>
     </div>
-
+    <% if is_logged_in? %>
+      <p>Hello, <%=current_user.email%></p>
+    <% end %>
 <%= yield %>
 </div>
 </body>

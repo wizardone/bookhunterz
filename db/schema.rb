@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131005114854) do
+ActiveRecord::Schema.define(version: 20140123204919) do
 
   create_table "book_authors", force: true do |t|
     t.string   "first_name"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20131005114854) do
 
   create_table "users", force: true do |t|
     t.string   "email"
-    t.string   "password"
+    t.string   "password_digest"
     t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
