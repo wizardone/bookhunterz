@@ -16,6 +16,6 @@ class SessionsController < ApplicationController
 
   private
     def remember_me?
-      return params[:remember_me].present?
+      params[:remember_me].present?
     end
 end
