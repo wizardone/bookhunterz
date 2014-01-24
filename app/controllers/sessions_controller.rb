@@ -1,6 +1,9 @@
 class SessionsController < ApplicationController
 
+  before_filter :check_user_login, only: :new
+
   def new
+
   end
 
   def create
@@ -17,5 +20,9 @@ class SessionsController < ApplicationController
   private
     def remember_me?
       params[:remember_me].present?
+    end
+
+    def check_user_login
+      redirect_to root_url if is_logged_in?
     end
 end
