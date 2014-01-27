@@ -12,7 +12,9 @@ Bookhunterz::Application.routes.draw do
 
    scope :admin do
     resource :user, :only => [:create, :update, :new]
-    resource :session, :only => [:create, :new]
+    resource :session, :only => [:create, :new] do
+      delete :destroy, as: :logout
+    end
    end
 
   # Example of regular route:

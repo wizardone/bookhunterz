@@ -29,6 +29,7 @@
     </div>
     <% if is_logged_in? %>
       <p>Hello, <%=current_user.email%></p>
+      <%= link_to 'Log out', logout_session_path, method: :delete %>
     <% end %>
 <%= yield %>
 </div>
