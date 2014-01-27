@@ -5,12 +5,10 @@ class Book::ReviewsController < ApplicationController
   end
 
   def create
-    @review = Book::Review.new(news_params)
-    @review.image = news_params[:image]
-    #@news.save!
-    #respond_with @news
-    if @review.valid?
-      redirect_to news_index_path, notice: "Review saved succesfully" if @review.save!
+    @review = Book::Review.new(reviews_params)
+    @review.image = reviews_params[:image]
+    if @review.save
+      redirect_to reviews_path, notice: "Review saved succesfully"
     else
       render :new
     end
@@ -28,7 +26,7 @@ class Book::ReviewsController < ApplicationController
   end
 
   private
-    def news_params
-      params.require(:book_review).permit(:title, :text, :image)
+    def reviews_params
+      params.require(:book_review).permit(:book_name, :review, :image)
     end
 end

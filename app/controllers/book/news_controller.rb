@@ -9,8 +9,8 @@ class Book::NewsController < ApplicationController
     @news.image = news_params[:image]
     #@news.save!
     #respond_with @news
-    if @news.valid?
-      redirect_to news_index_path, notice: "Review saved succesfully" if @news.save!
+    if @news.save
+      redirect_to news_index_path, notice: "News saved succesfully"
     else
       render :new
     end
