@@ -7,20 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= nav_bar :fixed => :top  do %>
-  <% menu_group do %>
+<%= nav_bar :static => :top  do %>
+  <%= menu_group do %>
         <%= menu_item "Home", root_path %>
         <%= menu_item "Новини", book_news_index_path %>
         <%= menu_item "Ревюта", book_reviews_path %>
       <% end %>
+
+    <%= menu_group :pull => :right do %>
+      <% if is_logged_in? %>
+        <%= menu_item current_user.email %>
+        <%= menu_item link_to 'Изход', logout_session_path, method: :delete %>
+      <% end %>
+    <% end %>
+
     <% end %>
     <div class="container" style="margin-top: 40px;">
-      <p class="navbar-text pull-right" >
-        <% if is_logged_in? %>
-          <p>Hello, <%=current_user.email%></p>
-          <%= link_to 'Log out', logout_session_path, method: :delete %>
-        <% end %>
-      </p>
     <div>
       <% if flash[:notice] %>
         <p class="alert"><%= flash[:notice] %></p>
@@ -33,7 +35,7 @@
     <div id="header-image">
       <%=image_tag(header_image) %>
     </div>
-    
+
 <%= yield %>
 </div>
 </body>
