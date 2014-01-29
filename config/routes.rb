@@ -5,9 +5,9 @@ Bookhunterz::Application.routes.draw do
   # You can have the root of your site routed with "root"
    root 'pages#index'
 
-   scope module: :book do
-    resources :news, :only => [:create, :show, :index, :new]
-    resources :reviews, :only => [:create, :show, :index, :new]
+   namespace :book do
+    resources :news
+    resources :reviews
    end
 
    scope :admin do

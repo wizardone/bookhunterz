@@ -10,11 +10,17 @@
 <%= nav_bar :fixed => :top  do %>
   <% menu_group do %>
         <%= menu_item "Home", root_path %>
-        <%= menu_item "Новини", news_index_path %>
-        <%= menu_item "Ревюта", reviews_path %>
+        <%= menu_item "Новини", book_news_index_path %>
+        <%= menu_item "Ревюта", book_reviews_path %>
+      <% end %>
     <% end %>
-  <% end %>
-  <div class="container" style="margin-top: 40px;">
+    <div class="container" style="margin-top: 40px;">
+      <p class="navbar-text pull-right" >
+        <% if is_logged_in? %>
+          <p>Hello, <%=current_user.email%></p>
+          <%= link_to 'Log out', logout_session_path, method: :delete %>
+        <% end %>
+      </p>
     <div>
       <% if flash[:notice] %>
         <p class="alert"><%= flash[:notice] %></p>
@@ -27,10 +33,7 @@
     <div id="header-image">
       <%=image_tag(header_image) %>
     </div>
-    <% if is_logged_in? %>
-      <p>Hello, <%=current_user.email%></p>
-      <%= link_to 'Log out', logout_session_path, method: :delete %>
-    <% end %>
+    
 <%= yield %>
 </div>
 </body>

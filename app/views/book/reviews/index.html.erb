@@ -1,12 +1,12 @@
 <h1>All reviews from Bookhunterz</h1>
-<%= link_to "Create review", new_review_path %>
+<%= link_to "Create review", new_book_review_path %>
 
 <ul class="thumbnails">
 <% @reviews.each do |review| %>
     <li class ="span4">
     <div>
-      <p><%= image_tag(review.image.thumb.url) %></p>
-      <p><%= review.book_name %></p>
+      <p><%= link_to image_tag(review.image.url), book_review_path(review) %></p>
+      <p><%= link_to review.book_name, book_review_path(review)%></p>
       <p><%= review.review.truncate(500) %></p>
     </div>
   </li>

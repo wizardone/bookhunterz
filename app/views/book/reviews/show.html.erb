@@ -1,2 +1,4 @@
-<h1>Book::Reviews#show</h1>
-<p>Find me in app/views/book/reviews/show.html.erb</p>
+<%= link_to 'Edit', edit_book_review_path(@review) %>
+<h1><%=@review.book_name %></h1>
+<br />
+<%= @review.review %>

@@ -1,20 +1,31 @@
 class Book::ReviewsController < ApplicationController
   respond_to :html
 
-  def new
-  end
-
   def create
     @review = Book::Review.new(reviews_params)
     @review.image = reviews_params[:image]
     if @review.save
-      redirect_to reviews_path, notice: "Review saved succesfully"
+      redirect_to book_reviews_path, notice: "Review saved succesfully"
     else
       render :new
     end
   end
 
+  def update
+    @review = Book::Review.find(params[:id])
+    if @review.update_attributes(reviews_params)
+      redirect_to book_review_path(@review), notice: "Review edited successfully"
+    else
+      render :update
+    end
+  end
+
+  def edit
+    @review = Book::Review.find(params[:id])
+  end
+
   def show
+    @review = Book::Review.find(params[:id])
   end
 
   def new
