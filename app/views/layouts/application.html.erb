@@ -16,8 +16,11 @@
 
     <%= menu_group :pull => :right do %>
       <% if is_logged_in? %>
-        <%= menu_item current_user.email %>
-        <%= menu_item link_to 'Изход', logout_session_path, method: :delete %>
+        <%= drop_down "Admin" do %>
+          <%= menu_item link_to 'Ново Ревю', new_book_review_path %>
+          <%= menu_item link_to 'Нова новина', new_book_news_path %>
+          <%= menu_item link_to 'Чупка!', logout_session_path, method: :delete %>
+        <% end %>
       <% end %>
     <% end %>
 

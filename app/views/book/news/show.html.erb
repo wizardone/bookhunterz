@@ -1,2 +1,4 @@
-<h1>Book::News#show</h1>
-<p>Find me in app/views/book/news/show.html.erb</p>
+<%= link_to 'Edit', edit_book_news_path(@news) %>
+<h1><%= @news.title %></h1>
+<br />
+<%= @news.text %>
