@@ -1,4 +1,4 @@
 <%= link_to 'Edit', edit_book_news_path(@news) %>
 <h1><%= @news.title %></h1>
 <br />
-<%= @news.text %>
+<%= sanitize @news.text %>
