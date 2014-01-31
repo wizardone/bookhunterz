@@ -2,3 +2,16 @@
 <h1><%=@review.book_name %></h1>
 <br />
 <%= sanitize @review.review %>
+<div id="rating">
+  Резил:
+  <div id="star"></div>
+</div><br />
+
+<script>
+  $('#star').raty({
+    number: 10,
+    readOnly: true,
+    score: <%=@review.score %>,
+    path: '/assets'
+  });
+</script>

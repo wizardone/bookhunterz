@@ -8,6 +8,8 @@
   <%= f.label :image %>
   <%= f.file_field :image %>
 
+  <%= f.label :score %>
+  <%= select :book_review, :score, options_for_select(@review.scores_available) %>
+
   <%= f.submit "Submit" %>
 <% end %>
-

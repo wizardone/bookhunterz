@@ -38,6 +38,6 @@ class Book::ReviewsController < ApplicationController
 
   private
     def reviews_params
-      params.require(:book_review).permit(:book_name, :review, :image)
+      params.require(:book_review).permit(:book_name, :review, :image, :score)
     end
 end

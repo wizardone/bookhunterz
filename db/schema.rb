@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140127213219) do
+ActiveRecord::Schema.define(version: 20140131140643) do
 
   create_table "book_authors", force: true do |t|
     t.string   "first_name"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20140127213219) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image"
+    t.decimal  "score",      precision: 2, scale: 1
   end
 
   create_table "book_scores", force: true do |t|
