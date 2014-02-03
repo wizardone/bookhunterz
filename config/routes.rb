@@ -6,8 +6,12 @@ Bookhunterz::Application.routes.draw do
    root 'pages#index'
 
    namespace :book do
-    resources :news
-    resources :reviews
+    resources :news do
+      resources :comments, :only => [:create, :show, :destoy]
+    end
+    resources :reviews do
+      resources :comments, :only => [:create, :show, :destoy]
+    end
    end
 
    scope :admin do
