@@ -2,7 +2,7 @@ class Book::CommentsController < ApplicationController
 
   def create
     @resource = find_resource
-    @resource.comments.build(comments_params)
+    @resource.comments.build(comments_params.merge(:ip_address => request.ip))
     if @resource.save
       redirect_to book_review_path(resource), notice: "Comment added"
     else
