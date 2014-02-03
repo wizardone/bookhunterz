@@ -1,5 +1,5 @@
 <%= link_to 'Edit', edit_book_review_path(@review) %>
-<h1><%=@review.book_name %></h1>
+<h1><%= @review.book_name %></h1>
 <br />
 <%= sanitize @review.review %>
 <div id="rating">
@@ -10,7 +10,12 @@
 <hr />
 
 <div>
-  <p>Коментирай</p>
+  <% if @review.errors.any? %>
+    <% @review.comments.last.errors.full_messages.each do |msg| %>
+      <p class="alert alert-error" ><%= msg %></p>
+    <% end %>
+  <% end %>
+  <p>Коментирай:</p>
   <%= form_for [@review, Comment.new] do |f| %>
     <%= f.label :email %>
     <%= f.text_field :email %>

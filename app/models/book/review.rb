@@ -4,6 +4,7 @@ class Book::Review < ActiveRecord::Base
   belongs_to :author
   has_many :comments, :as => :resource
 
+  validates_associated :comments
   validates :book_name, :presence => true
   validates :review, :presence => true
 
