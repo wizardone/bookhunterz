@@ -11,18 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140131140643) do
+ActiveRecord::Schema.define(version: 20140203093615) do
 
   create_table "book_authors", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "aka"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "book_comments", force: true do |t|
-    t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -54,6 +48,16 @@ ActiveRecord::Schema.define(version: 20140131140643) do
     t.string  "email"
     t.string  "ip_address"
     t.boolean "damage"
+  end
+
+  create_table "comments", force: true do |t|
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "resource_id"
+    t.string   "resource_type"
+    t.string   "email"
+    t.string   "ip_address"
   end
 
   create_table "users", force: true do |t|

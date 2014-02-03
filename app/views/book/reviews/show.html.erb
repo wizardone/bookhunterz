@@ -7,6 +7,22 @@
   <div id="star"></div>
 </div><br />
 
+<hr />
+
+<div>
+  <p>Коментирай</p>
+  <% form_for [@comment, @review] do |f| %>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+
+    <%= f.label :text %>
+    <%= f.text_area :text, class: 'tinymce', rows: 10 %>
+
+
+    <%= f.submit "Коментирай си" %>
+  <% end %>
+</div>
+
 <script>
   $('#star').raty({
     number: 10,
