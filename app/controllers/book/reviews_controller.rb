@@ -25,7 +25,8 @@ class Book::ReviewsController < ApplicationController
   end
 
   def show
-    @review = Book::Review.find(params[:id])
+    @resource = Book::Review.find(params[:id])
+    @comments = @resource.comments
   end
 
   def new

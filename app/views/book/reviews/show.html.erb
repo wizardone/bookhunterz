@@ -1,7 +1,7 @@
-<%= link_to 'Edit', edit_book_review_path(@review) %>
-<h1><%= @review.book_name %></h1>
+<%= link_to 'Edit', edit_book_review_path(@resource) %>
+<h1><%= @resource.book_name %></h1>
 <br />
-<%= sanitize @review.review %>
+<%= sanitize @resource.review %>
 <div id="rating">
   Резил:
   <div id="star"></div>
@@ -9,14 +9,15 @@
 
 <hr />
 
-<div>
-  <% if @review.errors.any? %>
-    <% @review.comments.last.errors.full_messages.each do |msg| %>
+<div id="comment_form">
+  <% if @resource.errors.any? %>
+    <% @resource.comments.last.errors.full_messages.each do |msg| %>
       <p class="alert alert-error" ><%= msg %></p>
     <% end %>
   <% end %>
+
   <p>Коментирай:</p>
-  <%= form_for [@review, Comment.new] do |f| %>
+  <%= form_for [@resource, Comment.new] do |f| %>
     <%= f.label :email %>
     <%= f.text_field :email %>
 
@@ -27,11 +28,20 @@
   <% end %>
 </div>
 
+<% if @resource.comments.any? %>
+  <% @resource.comments.each do |comment| %>
+    <div class="comment">
+      От: <%=comment.email %>
+      Коментар: <%=comment.comment %>
+    </div>
+  <% end %>
+<% end %>
+
 <script>
   $('#star').raty({
     number: 10,
     readOnly: true,
-    score: <%=@review.score %>,
+    score: <%=@resource.score %>,
     path: '/assets'
   });
 </script>

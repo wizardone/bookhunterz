@@ -1,9 +1,9 @@
 class Book::CommentsController < ApplicationController
 
   def create
-    @review = Book::Review.find(params[:review_id])
-    @review.comments.build(comments_params)
-    if @review.save
+    @resource = find_resource
+    @resource.comments.build(comments_params)
+    if @resource.save
       redirect_to book_review_path(resource), notice: "Comment added"
     else
       render 'book/reviews/show'
@@ -21,5 +21,14 @@ class Book::CommentsController < ApplicationController
   private
     def comments_params
       params.require(:comment).permit(:email, :comment)
+    end
+
+    def find_resource
+      params.each do |name, value|
+        if name =~ /(.+)_id$/
+          return "Book::#{$1.classify}".constantize.find(value)
+        end
+      end
+      nil
     end
 end
