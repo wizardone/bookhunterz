@@ -4,7 +4,8 @@ class Book::CommentsController < ApplicationController
     @resource = find_resource
     @resource.comments.build(comments_params.merge(:ip_address => request.ip))
     if @resource.save
-      redirect_to book_review_path(@resource), notice: "Comment added"
+      #redirect_to book_review_path(@resource), notice: "Comment added"
+      redirect_to polymorphic_url(@resource), notice: "Comment added"
     else
       render 'book/reviews/show'
     end

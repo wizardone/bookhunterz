@@ -27,21 +27,20 @@
     <% end %>
     <div class="container-fluid">
       <div class="row-fluid">
-        <div class="span3">
+        <div class="span2">
           Sidebar
         </div>
         <div class="span8">
+          <div id="header-image">
+            <%=image_tag(header_image) %>
+          </div>
           <div>
           <% if flash[:notice] %>
-          <p class="alert"><%= flash[:notice] %></p>
+          <p class="alert alert-success"><%= flash[:notice] %></p>
           <% end %>
           <% if flash[:error] %>
           <p class="alert alert-error"><%= flash[:error] %></p>
           <% end %>
-          </div>
-
-          <div id="header-image">
-            <%=image_tag(header_image) %>
           </div>
           <%= yield %>
         </div>
