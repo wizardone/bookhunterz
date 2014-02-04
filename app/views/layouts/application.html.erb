@@ -38,13 +38,16 @@
           </div>
           <div>
           <% if flash[:notice] %>
-          <p class="alert alert-success"><%= flash[:notice] %></p>
+            <p class="alert alert-success"><%= flash[:notice] %></p>
           <% end %>
           <% if flash[:error] %>
-          <p class="alert alert-error"><%= flash[:error] %></p>
+            <p class="alert alert-error"><%= flash[:error] %></p>
           <% end %>
           </div>
           <%= yield %>
+        </div>
+        <div class="span10">
+          FOOTER
         </div>
     </div>
 </div>
