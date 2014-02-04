@@ -25,21 +25,27 @@
     <% end %>
 
     <% end %>
-    <div class="container" style="margin-top: 40px;">
-    <div>
-      <% if flash[:notice] %>
-        <p class="alert"><%= flash[:notice] %></p>
-      <% end %>
-      <% if flash[:error] %>
-        <p class="alert alert-error"><%= flash[:error] %></p>
-      <% end %>
-    </div>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          Sidebar
+        </div>
+        <div class="span8">
+          <div>
+          <% if flash[:notice] %>
+          <p class="alert"><%= flash[:notice] %></p>
+          <% end %>
+          <% if flash[:error] %>
+          <p class="alert alert-error"><%= flash[:error] %></p>
+          <% end %>
+          </div>
 
-    <div id="header-image">
-      <%=image_tag(header_image) %>
+          <div id="header-image">
+            <%=image_tag(header_image) %>
+          </div>
+          <%= yield %>
+        </div>
     </div>
-
-<%= yield %>
 </div>
 </body>
 </html>

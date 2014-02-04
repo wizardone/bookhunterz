@@ -24,7 +24,7 @@ class Book::NewsController < ApplicationController
   end
 
   def show
-    @news = Book::News.find(params[:id])
+    @resource = Book::News.find(params[:id])
   end
 
   def edit

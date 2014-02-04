@@ -4,7 +4,7 @@ class Book::CommentsController < ApplicationController
     @resource = find_resource
     @resource.comments.build(comments_params.merge(:ip_address => request.ip))
     if @resource.save
-      redirect_to book_review_path(resource), notice: "Comment added"
+      redirect_to book_review_path(@resource), notice: "Comment added"
     else
       render 'book/reviews/show'
     end
@@ -15,7 +15,8 @@ class Book::CommentsController < ApplicationController
   end
 
   def destroy
-
+    @resource = find_resource
+    @resource.comments.find(params[:id]).first.destroy
   end
 
   private
@@ -26,6 +27,7 @@ class Book::CommentsController < ApplicationController
     def find_resource
       params.each do |name, value|
         if name =~ /(.+)_id$/
+          @resource_name = $1
           return "Book::#{$1.classify}".constantize.find(value)
         end
       end

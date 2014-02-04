@@ -1,4 +1,32 @@
-<%= link_to 'Edit', edit_book_news_path(@news) %>
-<h1><%= @news.title %></h1>
+<%= link_to 'Edit', edit_book_news_path(@resource) %>
+<h1><%= @resource.title %></h1>
 <br />
-<%= sanitize @news.text %>
+<%= sanitize @resource.text %>
+
+<div id="comment_form">
+  <% if @resource.errors.any? %>
+    <% @resource.comments.last.errors.full_messages.each do |msg| %>
+      <p class="alert alert-error" ><%= msg %></p>
+    <% end %>
+  <% end %>
+
+  <p>Коментирай:</p>
+  <%= form_for [@resource, Comment.new] do |f| %>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+
+    <%= f.label :comment %>
+    <%= f.text_area :comment, rows: 10, cols: 40 %>
+    <br />
+    <%= f.submit "Коментирай си" %>
+  <% end %>
+</div>
+
+<% if @resource.comments.any? %>
+  <% @resource.comments.each do |comment| %>
+    <div class="comment">
+      От: <%=comment.email %>
+      Коментар: <%=comment.comment %>
+    </div>
+  <% end %>
+<% end %>
