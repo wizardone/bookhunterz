@@ -13,8 +13,11 @@
         <%= menu_item "Новини", book_news_index_path %>
         <%= menu_item "Ревюта", book_reviews_path %>
       <% end %>
-
-    <%= menu_group :pull => :right do %>
+      <%= form_tag '/search', :class=> "navbar-form navbar-search" do %>
+           <%= text_field_tag :search, 'Search', :class => 'search-query' %>
+          <%= button_tag "Search" %>
+        <% end %>
+      <%= menu_group :pull => :right do %>
       <% if is_logged_in? %>
         <%= drop_down "Admin" do %>
           <%= menu_item link_to 'Ново Ревю', new_book_review_path %>
@@ -23,8 +26,7 @@
         <% end %>
       <% end %>
     <% end %>
-
-    <% end %>
+<% end %>
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span2">
