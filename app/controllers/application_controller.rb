@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :header_image, :current_user, :is_logged_in?
+  before_filter :generate_tag_cloud
+
   include ActsAsTaggableOn::TagsHelper
 
   def current_user

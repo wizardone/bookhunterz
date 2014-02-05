@@ -1,6 +1,5 @@
 class Book::ReviewsController < ApplicationController
   respond_to :html
-  before_filter :generate_tag_cloud
 
   def create
     @review = Book::Review.new(reviews_params)
