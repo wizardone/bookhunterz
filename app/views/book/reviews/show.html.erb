@@ -2,6 +2,9 @@
 <h1><%= @resource.book_name %></h1>
 <br />
 <%= sanitize @resource.review %>
+
+Categories: <%= @resource.tag_list %>
+
 <div id="rating">
   Резил:
   <div id="star"></div>

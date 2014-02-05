@@ -1,5 +1,6 @@
 class Book::ReviewsController < ApplicationController
   respond_to :html
+  before_filter :generate_tag_cloud
 
   def create
     @review = Book::Review.new(reviews_params)
@@ -39,6 +40,6 @@ class Book::ReviewsController < ApplicationController
 
   private
     def reviews_params
-      params.require(:book_review).permit(:book_name, :review, :image, :score)
+      params.require(:book_review).permit(:book_name, :review, :image, :score, :tag_list)
     end
 end

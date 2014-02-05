@@ -1,5 +1,6 @@
 class Book::Review < ActiveRecord::Base
   mount_uploader :image, BookNewsImageUploader
+  acts_as_taggable
 
   belongs_to :author
   has_many :comments, :as => :resource

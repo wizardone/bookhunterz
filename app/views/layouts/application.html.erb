@@ -30,7 +30,9 @@
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span2">
-          Sidebar
+          <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+            <%= link_to tag.name, {}, :class => css_class %>
+          <% end %>
         </div>
         <div class="span8">
           <div id="header-image">

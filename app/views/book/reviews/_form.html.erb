@@ -8,6 +8,9 @@
   <%= f.label :image %>
   <%= f.file_field :image %>
 
+  <%= f.label :tag_list, "Categories(separated by commas)" %>
+  <%= f.text_field :tag_list %>
+
   <%= f.label :score %>
   <%= select :book_review, :score, options_for_select(@review.scores_available) %>
 

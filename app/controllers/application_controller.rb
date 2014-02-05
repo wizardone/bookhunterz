@@ -4,9 +4,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :header_image, :current_user, :is_logged_in?
+  include ActsAsTaggableOn::TagsHelper
 
   def current_user
     User.find(session[:user_id])
+  end
+
+  def generate_tag_cloud
+    @tags = Book::Review.tag_counts
   end
 
   def is_logged_in?
