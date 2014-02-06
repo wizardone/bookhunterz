@@ -35,16 +35,20 @@ class BookNewsImageUploader < CarrierWave::Uploader::Base
   # version :thumb do
   #   process :scale => [100, 100]
   # end
-  process :resize_to_fit => [400, 400]
+  process :resize_to_fit => [800, 600]
 
   version :thumb do
     process :resize_to_fill => [100, 100]
   end
 
+  version :small_actual, from_version: :thumb do
+    process :resize_to_fill => [50, 50]
+  end
+
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
    def extension_white_list
-     %w(jpg jpeg png)
+     %w( jpg jpeg )
    end
 
   # Override the filename of the uploaded files:

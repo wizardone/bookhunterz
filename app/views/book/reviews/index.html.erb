@@ -1,12 +1,14 @@
-<h1>All reviews from Bookhunterz</h1>
+<h1>Ревюта на книги</h1>
 
 <ul class="thumbnails">
 <% @reviews.each do |review| %>
     <li class ="span4">
     <div>
       <p><%= link_to image_tag(review.image.url), book_review_path(review) %></p>
-      <p><%= link_to review.book_name, book_review_path(review)%></p>
-      <p><%= review.review.truncate(500) %></p>
+      <h3 style="text-align: center;"><%= link_to review.book_name, book_review_path(review)%></h3>
+      <h5 style="text-align: center;">От: <%= review.user.nick %></h5>
+      <p><%= sanitize review.review.truncate(500) %></p>
+      <p>Публикувано на: <%= review.updated_at.to_date %></p>
     </div>
   </li>
 <% end %>

@@ -3,4 +3,6 @@ class User < ActiveRecord::Base
   validates :nick, :presence => true
   has_secure_password
 
+  has_many :reviews, :class_name => 'Book::Review'
+
 end

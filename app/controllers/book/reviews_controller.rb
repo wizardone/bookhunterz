@@ -4,6 +4,7 @@ class Book::ReviewsController < ApplicationController
   def create
     @review = Book::Review.new(reviews_params)
     @review.image = reviews_params[:image]
+    @review.user = current_user
     if @review.save
       redirect_to book_reviews_path, notice: "Review saved succesfully"
     else
@@ -12,7 +13,7 @@ class Book::ReviewsController < ApplicationController
   end
 
   def update
-    @review = Book::Review.find(params[:id])
+    @review = Book::Review.find_by(book_name: params[:id])
     if @review.update_attributes(reviews_params)
       redirect_to book_review_path(@review), notice: "Review edited successfully"
     else
@@ -21,11 +22,11 @@ class Book::ReviewsController < ApplicationController
   end
 
   def edit
-    @review = Book::Review.find(params[:id])
+    @review = Book::Review.find_by(book_name: params[:id])
   end
 
   def show
-    @resource = Book::Review.find(params[:id])
+    @resource = Book::Review.find_by(book_name: params[:id])
     @comments = @resource.comments
   end
 
