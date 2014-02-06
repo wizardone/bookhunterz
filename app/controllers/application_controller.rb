@@ -12,8 +12,12 @@ class ApplicationController < ActionController::Base
     User.find(session[:user_id])
   end
 
-  def generate_tag_cloud
+  def generate_review_tag_cloud
     @tags = Book::Review.tag_counts
+  end
+
+  def generate_news_tag_cloud
+    @tags = Book::News.tag_counts
   end
 
   def is_logged_in?
