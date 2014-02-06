@@ -41,7 +41,7 @@ class BookNewsImageUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [100, 100]
   end
 
-  version :small_actual, from_version: :thumb do
+  version :small_тhumb, from_version: :thumb do
     process :resize_to_fill => [50, 50]
   end
 
