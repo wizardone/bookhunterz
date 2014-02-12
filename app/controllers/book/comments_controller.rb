@@ -2,7 +2,7 @@ class Book::CommentsController < ApplicationController
 
   def create
     @resource = find_resource
-    @resource.comments.build(comments_params.merge(:ip_address => request.ip))
+    @resource.comments.build(comments_params.merge(:ip_address => get_user_ip))
     if @resource.save
       redirect_to polymorphic_url(@resource), notice: "Comment added"
     else
@@ -32,5 +32,10 @@ class Book::CommentsController < ApplicationController
         end
       end
       nil
+    end
+
+    def get_user_ip
+      return request.env['HTTP_X_FORWARDED_FOR'].split(/,/).try(:first) if request.env['HTTP_X_FORWARDED_FOR'].present?
+      return request.ip
     end
 end
