@@ -1,8 +1,8 @@
-<div class="row">
+<div class="row main_row">
   <div class="span4">
-    <%=image_tag @reviews.first.image.url %>
+    <%=image_tag @reviews.first.image.url if @reviews.any? %>
   </div>
   <div class="span4">
-    <%= image_tag('logo.jpg') %>
+    <%= image_tag('main_logo.png', class: 'main_logo') %>
   </div>
 </div>
