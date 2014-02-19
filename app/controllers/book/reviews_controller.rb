@@ -27,7 +27,7 @@ class Book::ReviewsController < ApplicationController
 
   def show
     @resource = Book::Review.find_by(book_name: params[:id])
-    @comments = @resource.comments
+    @comments = @resource.comments if @resource.present?
   end
 
   def new
