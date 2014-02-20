@@ -22,7 +22,7 @@ Bookhunterz::Application.routes.draw do
    end
 
    get 'tags/:tag', to: 'tags#index', as: 'tag'
-   post 'search', to: 'search#index', as: 'search'
+   get 'search/', to: 'search#index', as: 'search'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

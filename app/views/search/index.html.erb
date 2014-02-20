@@ -1,0 +1,18 @@
+<% if @resource.present? %>
+<ul class="thumbnails">
+<% @resource.each do |resource| %>
+    <li class ="span4">
+    <div>
+      <p><%= link_to image_tag(resource.image.url), book_review_path(resource) %></p>
+      <h3 style="text-align: center;"><%= link_to resource.book_name, book_review_path(resource)%></h3>
+      <h5 style="text-align: center;">От: <%= resource.user.nick %></h5>
+      <p><%= sanitize resource.review.truncate(500) %></p>
+      <p>Публикувано на: <%= resource.updated_at.to_date %></p>
+    </div>
+  </li>
+<% end %>
+<% else %>
+  <br />
+  <p class="alert alert-error">No Records found</p>
+<% end %>
+</ul>

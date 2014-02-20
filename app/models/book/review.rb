@@ -16,4 +16,10 @@ class Book::Review < ActiveRecord::Base
   def to_param
     book_name
   end
+
+  class << self
+    def search_for(name)
+      where("lower(book_name) LIKE ?", "%#{name}")
+    end
+  end
 end
