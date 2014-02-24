@@ -25,8 +25,12 @@
 <% if @resource.comments.any? %>
   <% @resource.comments.each do |comment| %>
     <div class="comment">
-      От: <%=comment.email %>
-      Коментар: <%=comment.comment %>
+      От: <%=comment.email %><br />
+      Коментар: <%=comment.comment %><br />
+      <% if is_logged_in? %>
+        <%= link_to 'Изтрий гадината', book_review_comment_path(@resource, comment), method: :delete %>
+      <% end %>
+      <hr />
     </div>
   <% end %>
 <% end %>
