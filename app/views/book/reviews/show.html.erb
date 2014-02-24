@@ -26,7 +26,7 @@ Categories: <%= @resource.tag_list %>
     <%= f.text_field :email %>
 
     <%= f.label :comment %>
-    <%= f.text_area :comment, rows: 10, cols: 40 %>
+    <%= f.text_area :comment, rows: 10, cols: 160 %>
     <br />
     <%= f.submit "Коментирай си" %>
   <% end %>
@@ -35,8 +35,12 @@ Categories: <%= @resource.tag_list %>
 <% if @resource.comments.any? %>
   <% @resource.comments.each do |comment| %>
     <div class="comment">
-      От: <%=comment.email %>
-      Коментар: <%=comment.comment %>
+      <b>От:</b> <%=comment.email %><br />
+      <b>Коментар:</b> <%=comment.comment %><br />
+      <% if is_logged_in? %>
+        <%= link_to 'Изтрий гадината', book_review_comment_path(@resource, comment), method: :delete %>
+      <% end %>
+      <hr />
     </div>
   <% end %>
 <% end %>

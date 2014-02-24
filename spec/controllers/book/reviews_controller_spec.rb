@@ -6,7 +6,7 @@ describe Book::ReviewsController do
     it "returns http success" do
       get 'index'
 
-      response.should be_success
+      expect(response).to be_success
     end
   end
 
@@ -15,7 +15,7 @@ describe Book::ReviewsController do
     it "returns http success" do
       get 'show', id: review.id
 
-      response.should be_success
+      expect(response).to be_success
     end
   end
 
@@ -26,7 +26,13 @@ describe Book::ReviewsController do
     it "returns http success" do
       post 'create', book_review: { book_name: 'Test book', review: 'aaaa', score: '8' }
 
-      response.should be_redirect
+      expect(response).to be_redirect
+    end
+
+    it 'fails with validation error' do
+      post 'create', book_review: { book_name: '', review: '', score: '8' }
+
+      expect(response).to render_template :new
     end
   end
 
@@ -35,7 +41,7 @@ describe Book::ReviewsController do
     it "returns http success" do
       put 'update', id: review.book_name, book_review: { score: '5' }
 
-      response.should be_redirect
+      expect(response).to be_redirect
     end
   end
 

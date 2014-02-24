@@ -7,10 +7,10 @@ Bookhunterz::Application.routes.draw do
 
    namespace :book do
     resources :news do
-      resources :comments, :only => [:create, :show, :destoy]
+      resources :comments, :only => [:create, :show, :destroy]
     end
     resources :reviews do
-      resources :comments, :only => [:create, :show, :destoy]
+      resources :comments, :only => [:create, :show, :destroy]
     end
    end
 

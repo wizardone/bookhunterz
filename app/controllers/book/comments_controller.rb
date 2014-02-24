@@ -15,8 +15,8 @@ class Book::CommentsController < ApplicationController
   end
 
   def destroy
-    @resource = find_resource
-    @resource.comments.find(params[:id]).first.destroy
+    Comment.find(params[:id]).destroy
+    redirect_to book_review_path(params[:review_id]), notice: 'Коментарът биде изтрит'
   end
 
   private
@@ -28,7 +28,7 @@ class Book::CommentsController < ApplicationController
       params.each do |name, value|
         if name =~ /(.+)_id$/
           @resource_name = $1
-          return "Book::#{$1.classify}".constantize.find(value)
+          return "Book::#{$1.classify}".constantize.find_by(book_name: value)
         end
       end
       nil
