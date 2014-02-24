@@ -6,8 +6,8 @@
     <div>
       <%= image_tag('main_logo.png') %>
       <hr />
-      <p><%= sanitize @reviews.first.review.truncate(200) %></p>
-      <%=link_to 'Прочети повече', book_review_path(@reviews.first)%>
+      <p><%= sanitize @reviews.first.review.truncate(200) if @reviews.any? %></p>
+      <%=link_to 'Прочети повече', book_review_path(@reviews.first) if @reviews.any?%>
     </div>
   </div>
 
