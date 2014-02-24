@@ -2,7 +2,12 @@
   <div class="span4">
     <%=image_tag @reviews.first.image.url if @reviews.any? %>
   </div>
-  <div class="span4">
-    <%= image_tag('main_logo.png', class: 'main_logo') %>
+  <div class="span4 for_logo">
+    <div>
+      <%= image_tag('main_logo.png') %>
+      <hr />
+      <p><%= sanitize @reviews.first.review.truncate(200) %></p>
+      <%=link_to 'Прочети повече', book_review_path(@reviews.first)%>
+    </div>
   </div>
 </div>
