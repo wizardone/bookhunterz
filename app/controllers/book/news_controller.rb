@@ -15,7 +15,7 @@ class Book::NewsController < ApplicationController
   end
 
   def update
-    @news = Book::News.find(params[:id])
+    @news = Book::News.find_by(title: params[:id])
     if @news.update_attributes(news_params)
       redirect_to book_news_path(@news), notice: "News edited successfully"
     else
@@ -24,11 +24,11 @@ class Book::NewsController < ApplicationController
   end
 
   def show
-    @resource = Book::News.find(params[:id])
+    @resource = Book::News.find_by(title: params[:id])
   end
 
   def edit
-    @news = Book::News.find(params[:id])
+    @news = Book::News.find_by(title: params[:id])
   end
 
   def new

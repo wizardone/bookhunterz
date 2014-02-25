@@ -6,4 +6,8 @@ class Book::News < ActiveRecord::Base
   validates_associated :comments
   validates :title, :presence => true
   validates :text, :presence => true
+
+  def to_param
+    title
+  end
 end

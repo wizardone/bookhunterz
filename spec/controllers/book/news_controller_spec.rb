@@ -16,6 +16,12 @@ describe Book::NewsController do
 
       expect(response).to be_redirect
     end
+
+    it 'fails with validation errors' do
+      post 'create', book_news: { title: '', text: 'some random text' }
+
+      expect(response).to render_template :new
+    end
   end
 
   describe "GET 'show'" do

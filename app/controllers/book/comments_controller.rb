@@ -1,5 +1,7 @@
 class Book::CommentsController < ApplicationController
 
+  attr_reader :resource_name
+
   def create
     @resource = find_resource
     @resource.comments.build(comments_params.merge(:ip_address => get_user_ip))
@@ -11,7 +13,6 @@ class Book::CommentsController < ApplicationController
   end
 
   def show
-
   end
 
   def destroy
@@ -28,10 +29,20 @@ class Book::CommentsController < ApplicationController
       params.each do |name, value|
         if name =~ /(.+)_id$/
           @resource_name = $1
-          return "Book::#{$1.classify}".constantize.find_by(book_name: value)
+          return search_criteria(value)
         end
       end
       nil
+    end
+
+    def search_criteria(value)
+      if @resource_name == 'news'
+        criteria = { title: value }
+      else
+        criteria = { book_name: value }
+      end
+      pp "Book::#{@resource_name.classify}".constantize.find_by(criteria)
+      "Book::#{@resource_name.classify}".constantize.find_by(criteria)
     end
 
     def get_user_ip
