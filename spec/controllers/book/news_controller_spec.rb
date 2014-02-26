@@ -20,7 +20,7 @@ describe Book::NewsController do
     it 'fails with validation errors' do
       post 'create', book_news: { title: '', text: 'some random text' }
 
-      expect(response).to render_template :new
+      expect(response.body).to render_template :new
     end
   end
 

@@ -1,8 +1,10 @@
-<%= link_to 'Edit', edit_book_news_path(@resource) %>
 <h1><%= @resource.title %></h1>
 <br />
 <%= sanitize @resource.text %>
-
+<hr />
+<% if is_logged_in? %>
+  <%= link_to 'Edit', edit_book_news_path(@resource), class: 'btn' %>
+<% end %>
 <div id="comment_form">
   <% if @resource.errors.any? %>
     <% @resource.comments.last.errors.full_messages.each do |msg| %>

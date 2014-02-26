@@ -23,6 +23,7 @@ class Book::ReviewsController < ApplicationController
 
   def edit
     @review = Book::Review.find_by(book_name: params[:id])
+    pp @review.score.to_i
   end
 
   def show

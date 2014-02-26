@@ -12,7 +12,7 @@
   <%= f.text_field :tag_list %>
 
   <%= f.label :score %>
-  <%= select :book_review, :score, options_for_select(@review.scores_available, selected: @review.score) %>
+  <%= select :book_review, :score, options_for_select(@review.scores_available, selected: @review.score.to_i) %>
 
   <%= f.submit "Submit" %>
 <% end %>

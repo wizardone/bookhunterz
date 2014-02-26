@@ -1,18 +1,24 @@
 <div class="row main_row">
   <div class="span4">
-    <%=image_tag @reviews.first.image.url if @reviews.any? %>
+    <%=image_tag @reviews.last.image.url if @reviews.any? %>
   </div>
   <div class="span4 for_logo">
     <div>
       <%= image_tag('main_logo.png') %>
       <hr />
-      <p><%= sanitize @reviews.first.review.truncate(200) if @reviews.any? %></p>
-      <%=link_to 'Прочети повече', book_review_path(@reviews.first) if @reviews.any?%>
+      <p><%= sanitize @reviews.last.review.truncate(300) if @reviews.any? %></p>
+      <%=link_to 'Прочети повече', book_review_path(@reviews.last) if @reviews.any?%>
     </div>
   </div>
-
 </div>
+<br />
 <div class="row">
-    
+  <ul class="thumbnails">
+    <% @reviews.each do |review| %>
+      <li class="span2">
+        <%= image_tag review.image.main_page_thumb.url, size: "200x200", class: 'main_image_thumb' %>
+      </li>
+    <% end %>
+  </ul>
 </div>
 
