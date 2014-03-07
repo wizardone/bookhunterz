@@ -6,7 +6,8 @@ class Book::CommentsController < ApplicationController
     @resource = find_resource
     @resource.comments.build(comments_params.merge(:ip_address => get_user_ip))
     if @resource.save
-      redirect_to polymorphic_url(@resource), notice: "Comment added"
+      CommentMailer.comment_added(@resource).deliver
+      redirect_to polymorphic_url(@resource), notice: "Коментарът биде добавен"
     else
       render 'book/reviews/show'
     end
@@ -41,7 +42,6 @@ class Book::CommentsController < ApplicationController
       else
         criteria = { book_name: value }
       end
-      pp "Book::#{@resource_name.classify}".constantize.find_by(criteria)
       "Book::#{@resource_name.classify}".constantize.find_by(criteria)
     end
 
