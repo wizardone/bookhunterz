@@ -1,0 +1,12 @@
+<% if @header_image.errors.any? %>
+  <% @header_image.errors.full_messages.each do |msg| %>
+    <p class="alert alert-error" ><%= msg %></p>
+  <% end %>
+<% end %>
+
+<%= form_for @header_image  do |f| %>
+  <%= f.label :image %>
+  <%= f.file_field :image %>
+
+  <%= f.submit "Submit" %>
+<% end %>

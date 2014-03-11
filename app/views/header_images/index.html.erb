@@ -1,0 +1,8 @@
+<%=link_to "Нова картинка", new_header_image_path %><br />
+Списък:
+<%= @header_images.each do |header_image| %>
+  <%= image_tag(header_image.image.list.url) %>
+  <%= check_box_tag "header_image", "yes", header_image.active? %>
+  Active:
+  <br /><hr />
+<% end %>
