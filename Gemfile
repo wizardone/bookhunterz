@@ -45,9 +45,9 @@ group :development, :test do
   gem 'thin'
   gem 'rspec-rails'
   gem 'capistrano'
-  gem 'debugger'
   gem 'pry'
   gem 'quiet_assets'
+  gem 'wordpressure'
 end
 
 # Use ActiveModel has_secure_password
