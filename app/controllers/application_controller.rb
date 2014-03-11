@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   end
 
   def header_image
-    'header_logo.jpg' if display_logo_actions.include? params[:action]
+    HeaderImage.find_by(active: true).image.url
   end
 
   def display_logo_actions

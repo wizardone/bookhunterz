@@ -34,6 +34,7 @@
           <%= menu_item link_to 'Ново Ревю', new_book_review_path %>
           <%= menu_item link_to 'Нова новина', new_book_news_path %>
           <%= menu_item link_to 'Чупка!', logout_session_path, method: :delete %>
+          <%= menu_item link_to 'Нова начална картинка', header_images_path %>
         <% end %>
       <% end %>
     <% end %>
@@ -47,7 +48,7 @@
         </div>
         <div class="span8" style="border-radius:5px;">
           <div id="header-image">
-            <%=image_tag(header_image) %>
+            <%= image_tag(header_image) %>
           </div>
           <div>
           <% if flash[:notice] %>
