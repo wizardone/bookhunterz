@@ -2,7 +2,7 @@
 Списък:
 <%= @header_images.each do |header_image| %>
   <%= image_tag(header_image.image.list.url) %>
-  <%= check_box_tag "header_image", "yes", header_image.active? %>
   Active:
+  <%= check_box_tag "header_image", "yes", header_image.active? %>
   <br /><hr />
 <% end %>
