@@ -4,8 +4,8 @@ class Book::CommentsController < ApplicationController
 
   def create
     @resource = find_resource
-    @resource.comments.build(comments_params.merge(:ip_address => get_user_ip))
-    if @resource.save
+    @comment = @resource.comments.build(comments_params.merge(:ip_address => get_user_ip))
+    if @comment.save
       CommentMailer.comment_added(@resource).deliver
       redirect_to polymorphic_url(@resource), notice: "Коментарът биде добавен"
     else

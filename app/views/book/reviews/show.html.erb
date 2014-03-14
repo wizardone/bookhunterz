@@ -17,8 +17,8 @@ Categories: <%= @resource.tag_list %>
 <hr />
 
 <div id="comment_form">
-  <% if @resource.errors.any? %>
-    <% @resource.comments.last.errors.full_messages.each do |msg| %>
+  <% if @comment.present? && @comment.errors.any? %>
+    <% @comment.errors.full_messages.each do |msg| %>
       <p class="alert alert-error" ><%= msg %></p>
     <% end %>
   <% end %>
