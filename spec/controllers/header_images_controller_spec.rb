@@ -24,7 +24,8 @@ describe HeaderImagesController do
     end
 
     it 'creates a new header image' do
-      post :create
+      image = Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/files/header_logo.jpg')))
+      post :create, header_image: {image: image}
 
       expect(response).to redirect_to(root_path)
     end

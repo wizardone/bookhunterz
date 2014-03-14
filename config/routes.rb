@@ -22,6 +22,7 @@ Bookhunterz::Application.routes.draw do
    end
 
    resources :header_images, only: [:index, :new, :create]
+   resources :us, only: [:index]
 
    get 'tags/:tag', to: 'tags#index', as: 'tag'
    get 'search/', to: 'search#index', as: 'search'

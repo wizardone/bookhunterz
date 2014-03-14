@@ -23,6 +23,7 @@
         <%= menu_item "Home", root_path %>
         <%= menu_item "Новини", book_news_index_path %>
         <%= menu_item "Ревюта", book_reviews_path %>
+        <%= menu_item "За нас", us_path %>
       <% end %>
       <%= form_tag search_path, class: "navbar-form navbar-search", method: :get do %>
            <%= text_field_tag :search, 'Search', :class => 'search-query' %>
