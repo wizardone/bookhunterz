@@ -1,4 +1,4 @@
-<h3>Tags: <%=@search_tag %></h3>
+<h3>Категории: <%=@search_tag %></h3>
 
 <ul class="thumbnails">
 <% @reviews_by_tags.each do |review| %>
@@ -6,7 +6,7 @@
     <div>
       <p><%= link_to image_tag(review.image.url), book_review_path(review) %></p>
       <p><%= link_to review.book_name, book_review_path(review)%></p>
-      <p><%= review.review.truncate(500) %></p>
+      <p><%= sanitize review.review.truncate(500) %></p>
     </div>
   </li>
 <% end %>
