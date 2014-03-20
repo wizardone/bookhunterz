@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :header_image, :current_user, :is_logged_in?
-  before_filter :generate_review_tag_cloud
+  before_filter :generate_review_tag_cloud, :get_latest_comments
 
   include ActsAsTaggableOn::TagsHelper
 
@@ -18,6 +18,10 @@ class ApplicationController < ActionController::Base
 
   def generate_news_tag_cloud
     @tags = Book::News.tag_counts
+  end
+
+  def get_latest_comments
+    @comments = Comment.order(:created_at).limit(10)
   end
 
   def is_logged_in?

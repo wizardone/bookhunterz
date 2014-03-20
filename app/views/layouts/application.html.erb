@@ -43,9 +43,23 @@
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span2">
-          <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
-            <%= link_to tag.name, tag_path(tag.name), :class => css_class %>
-          <% end %>
+          <div class="tags_cloud">
+            <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+              <%= link_to tag.name, tag_path(tag.name), :class => css_class %>
+            <% end %>
+          </div>
+          <hr />
+          <div class="latest_comments">
+            <p>Последни коментари:</p>
+            <% if @comments.any? %>
+              <div class="comment_small">
+                <% @comments.each do |comment| %>
+                  <b>От:</b> <%= comment.email %>
+                  <%= comment.comment.truncate 100 %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
         </div>
         <div class="span8" style="border-radius:5px;">
           <div id="header-image">
