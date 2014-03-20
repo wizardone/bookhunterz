@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe PagesController do
+describe SearchController do
 
   describe "GET 'index'" do
     it 'shows the main index page with reviews' do
-      get :index
+      get :index, search: 'my_book'
 
       expect(response).to render_template :index
     end

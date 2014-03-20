@@ -40,7 +40,7 @@ gem 'tinymce-rails'
 gem 'rmagick'
 gem 'mini_magick'
 gem 'acts-as-taggable-on'
-
+gem 'will_paginate'
 group :development, :test do
   gem 'thin'
   gem 'rspec-rails'

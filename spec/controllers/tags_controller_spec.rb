@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe PagesController do
+describe TagsController do
 
   describe "GET 'index'" do
-    it 'shows the main index page with reviews' do
-      get :index
+    it 'shows search results for tags' do
+      get :index, tag: 'fantasy'
 
       expect(response).to render_template :index
     end
