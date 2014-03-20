@@ -19,7 +19,7 @@ class Book::Review < ActiveRecord::Base
 
   class << self
     def search_for(name)
-      where("lower(book_name) LIKE ?", "%#{name}")
+      where("lower(book_name) LIKE LOWER(?)", "%#{name}%")
     end
   end
 end
